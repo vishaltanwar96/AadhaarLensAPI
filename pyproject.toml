@@ -9,6 +9,7 @@ license = "MIT"
 python = "^3.9"
 aadhaar-py = "^2.0.0"
 Flask = "^2.0.2"
+Flask-Cors = "^3.0.10"
 
 [tool.poetry.dev-dependencies]
 black = "^21.12b0"
