@@ -12,8 +12,18 @@ def extract_api():
     data = request.json.get("data")
     if not data:
         return jsonify({"status": "fail", "error": "Please send the data"}), 400
-    if not isinstance(data, int):
-        return jsonify({"status": "fail", "error": "Please send integer data"}), 400
+    try:
+        data = int(data)
+    except ValueError:
+        return (
+            jsonify(
+                {
+                    "status": "fail",
+                    "error": "Conversion to int not possible, Please send valid data",
+                }
+            ),
+            400,
+        )
     try:
         extracted_data = extract_data(data)
     except MalformedDataReceived:
